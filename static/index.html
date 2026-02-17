@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwistedDebate</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>TwistedDebate</h1>
+            <div class="header-buttons">
+                <button id="help-btn" class="header-btn" aria-label="Show help" title="Help">
+                    <span class="btn-icon">❓</span>
+                </button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Left Sidebar: Configuration Panel -->
+            <aside class="sidebar left-sidebar" id="config-panel">
+                <div class="sidebar-header">
+                    <h2>Configuration</h2>
+                    <button class="collapse-btn" id="config-collapse" aria-label="Collapse configuration panel">
+                        <span>◀</span>
+                    </button>
+                </div>
+
+                <div class="sidebar-content">
+                    <!-- Debate Topic -->
+                    <section class="config-section">
+                        <h3>Debate Topic</h3>
+                        <textarea 
+                            id="debate-topic" 
+                            rows="4" 
+                            placeholder="Enter your debate topic or question..."
+                        >What is the most important challenge facing humanity in the next decade?</textarea>
+                    </section>
+
+                    <!-- Debate Format -->
+                    <section class="config-section">
+                        <h3>Debate Format</h3>
+                        <div class="format-options">
+                            <label class="radio-option">
+                                <input type="radio" name="debate-format" value="one-to-one" checked>
+                                <span>One-to-One Debate</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="debate-format" value="cross-exam">
+                                <span>One-on-One Cross-Examination</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="debate-format" value="many-on-one">
+                                <span>Many-on-One Examination</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="debate-format" value="panel">
+                                <span>Panel Discussion with Moderator</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="debate-format" value="round-robin">
+                                <span>Round Robin without Moderator</span>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Dynamic Configuration -->
+                    <section class="config-section" id="participant-config">
+                        <!-- This section will be dynamically populated based on format selection -->
+                    </section>
+
+                    <!-- Gain Setting -->
+                    <section class="config-section">
+                        <h3>Debate Intensity</h3>
+                        <div class="slider-container">
+                            <label for="gain-slider" class="gain-label">
+                                Gain: <span class="slider-value" id="gain-value">5</span>/10
+                            </label>
+                            <input type="range" id="gain-slider" min="1" max="10" value="5" class="gain-slider">
+                            <div class="gain-description" id="gain-description">
+                                Medium - Balanced debate intensity
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Max Iterations -->
+                    <section class="config-section">
+                        <h3>Maximum Turns</h3>
+                        <div class="form-group">
+                            <input type="number" id="max-iterations" min="1" max="20" value="5" />
+                        </div>
+                    </section>
+
+                    <!-- Start Button -->
+                    <button id="start-debate-btn" class="btn-primary">
+                        <span class="btn-text">Start Debate</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Center: Debate Output Area -->
+            <section class="debate-output">
+                <div class="output-header">
+                    <h2 id="current-topic">Ready to start debate</h2>
+                </div>
+                
+                <div class="transcript-container" id="transcript">
+                    <div class="welcome-message">
+                        <h3>Welcome to TwistedDebate</h3>
+                        <p>Configure your debate format on the left and click "Start Debate" to begin.</p>
+                        <div class="feature-list">
+                            <h4>Available Formats:</h4>
+                            <ul>
+                                <li><strong>One-to-One Debate:</strong> Two perspectives in direct debate</li>
+                                <li><strong>Cross-Examination:</strong> One examiner questioning an examinee</li>
+                                <li><strong>Many-on-One:</strong> Multiple examiners questioning one examinee</li>
+                                <li><strong>Panel Discussion:</strong> Multiple panelists with a moderator</li>
+                                <li><strong>Round Robin:</strong> Multiple participants in turn-based discussion</li>
+                            </ul>
+                        </div>
+                        <div class="license-info">
+                            <p><strong>License:</strong> <a href="#" id="show-license" class="license-link">MIT License</a></p>
+                            <p><strong>Source Code:</strong> <a href="https://github.com/satoruisaka/TwistedDebate" target="_blank" rel="noopener noreferrer">https://github.com/satoruisaka/TwistedDebate</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Input Area (shown when USER is a participant) -->
+                <div class="user-input-area hidden" id="user-input-area">
+                    <div class="user-input-header">
+                        <strong>Your Turn:</strong>
+                        <span id="user-role-label"></span>
+                    </div>
+                    <textarea 
+                        id="user-input" 
+                        rows="4" 
+                        placeholder="Enter your argument or response..."
+                    ></textarea>
+                    <button id="submit-user-input" class="btn-secondary">Submit</button>
+                </div>
+            </section>
+
+            <!-- Right Sidebar: Progress Panel -->
+            <aside class="sidebar right-sidebar" id="progress-panel">
+                <div class="sidebar-header">
+                    <button class="collapse-btn" id="progress-collapse" aria-label="Collapse progress panel">
+                        <span>▶</span>
+                    </button>
+                    <h2>Progress</h2>
+                </div>
+
+                <div class="sidebar-content">
+                    <!-- Iteration Info -->
+                    <section class="progress-section">
+                        <h3>Status</h3>
+                        <div class="stat-item">
+                            <span class="stat-label">Iteration:</span>
+                            <span class="stat-value" id="iteration-number">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Status:</span>
+                            <span class="stat-value" id="debate-status">Not Started</span>
+                        </div>
+                    </section>
+
+                    <!-- Metrics -->
+                    <section class="progress-section">
+                        <h3>Metrics</h3>
+                        <div class="stat-item">
+                            <span class="stat-label">Agreement Score:</span>
+                            <span class="stat-value" id="agreement-score">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Convergence:</span>
+                            <span class="stat-value" id="convergence-status">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Emotional Sensitivity:</span>
+                            <span class="stat-value" id="emotional-sensitivity">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Bias Level:</span>
+                            <span class="stat-value" id="bias-level">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Topic Drift:</span>
+                            <span class="stat-value" id="topic-drift">-</span>
+                        </div>
+                    </section>
+
+                    <!-- Key Statements -->
+                    <section class="progress-section">
+                        <h3>Key Statements</h3>
+                        <div id="key-statements" class="key-statements-list">
+                            <p class="empty-state">No statements yet</p>
+                        </div>
+                    </section>
+
+                    <!-- Record File Info -->
+                    <section class="progress-section">
+                        <h3>Record</h3>
+                        <div id="record-info" class="record-info">
+                            <p class="empty-state">No record file yet</p>
+                        </div>
+                    </section>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- App Logic -->
+    <script src="/static/app.js" type="module"></script>
+</body>
+</html>

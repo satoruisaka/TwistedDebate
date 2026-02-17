@@ -1,0 +1,25 @@
+# TwistedDebate V4 - Multi-Format Debate System
+# Python dependencies
+
+# Web Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+
+# Data Validation
+pydantic==2.5.3
+python-dotenv==1.0.0
+
+# HTTP Client
+requests==2.31.0
+
+# CORS Support (included with FastAPI but explicit here)
+# starlette (comes with FastAPI)
+
+# Optional: For enhanced markdown formatting
+# markdown==3.5.1
+
+# Development dependencies (optional)
+# pytest==7.4.3
+# black==23.12.1
+# flake8==7.0.0
