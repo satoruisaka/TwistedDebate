@@ -1,14 +1,12 @@
+![TwistedDebate](TwistedDebate.png)
+
 # TwistedDebate: Autonomous AI Debate Platform
 
-![TwistedDebate](TwistedDebateColorIcon.png)
+A full-stack debate system for iteratively generating and stress-testing ideas via progressive turn-by-turn LLM generation and **30+ dynamic perspective and communication style variations and debate intensity & creativety control**.
 
-A full-stack debate system for iterative idea stress-testing via progressive turn-by-turn LLM generation. 
-
-Designed to benchmark and compare the unique capabilities and characteristics of both local and cloud AI models.
-
-Supports various debate formats and leverages multiple open-weight models with **30+ dynamic perspective and communication style variations and debate intensity & creativety control**.
-
-Built for the local LLM community using a FastAPI/Python backend and JavaScript frontend.
+- Supports five debate formats
+- Leverages multiple open-weight models
+- Built for the local LLM community using a FastAPI/Python backend and JavaScript frontend.
 
 ---
 
