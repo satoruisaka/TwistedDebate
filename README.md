@@ -39,6 +39,25 @@ Built for the local LLM community using a FastAPI/Python backend and JavaScript 
 - **Panel Discussion**: Multiple panelists with a moderator
 - **Round Robin**: Multiple participants in turn-based discussion
 
+## Debater perspective variations
+
+- **echo_er**: Amplifies positives, reverberates opportunities
+- **invert_er**: Negates signals, flips polarity, points out missing info
+- **what_if_er**: Hypothesizes new ideas, explores alternative scenarios
+- **so_what_er**: Questions signals, explores implications and consequences
+- **cucumb_er**: Cool-headed academic analysis
+- **archiv_er**: Brings historical context, prior works, literature
+
+## Debater communication styles
+
+- **neutral**: Clear, standard English
+- **technical**: Precise, jargon-heavy, scientific/engineering register
+- **primal**: Short, punchy, aggressive
+- **poetic**: Lyrical, metaphor-rich, mystical
+- **satirical**: Witty, ironic, humorous
+
+**Note**: "Cucumber" + "Neutral" result in balanced debates. Use other combinations for more varied and heated interactions.
+
 ---
 
 ![TwistedDebate Screenshot 2](TwistedDebate_screenshot2.jpg)
