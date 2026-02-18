@@ -8,7 +8,6 @@ A full-stack debate system for iteratively generating and stress-testing ideas v
 - Leverages multiple open-weight models
 - Built for the local LLM community using a FastAPI/Python backend and JavaScript frontend.
 
-
 ---
 
 ![TwistedDebate Screenshot 1](TwistedDebate_screenshot1.jpg)
@@ -176,3 +175,11 @@ February 16, 2026 by Satoru Isaka
 ## Support
 
 Sorry, no support available.
+
+---
+
+# Theoretical remarks on TwistedDebate
+
+TwistedDebate is a platform designed to expose the range of responses achievable with large language models (LLMs). By systematically varying parameters like MODE and TONE, TwistedDebate reveals the inherent ‘computational perspectives’ rooted in their training data and the specific context of each prompt. 
+
+Instead of treating a single LLM as a monolithic fixed entity, it is crucial to recognize the range of behaviors it is capable of exhibiting. Think of it like an actor playing different roles. The underlying ‘actor’ (the LLM itself) remains consistent, but its ‘performance’ (the generated output) changes dramatically based on the ‘direction’ it receives, such as through adjustments to MODE and TONE. This understanding is vital for avoiding anthropomorphism; LLMs don't possess fixed personalities or beliefs. Their responses are a product of the prompt, the parameters, and the training data, not inherent consciousness.
