@@ -17,16 +17,16 @@ A full-stack debate system for iteratively generating and stress-testing ideas v
 
 ## Summary of Key Features
 
-- Debate format variations
-- MODE - Debater perspective variations
-- TONE - Debater communication styles
-- GAIN - Debate intensity and cretiveity
-- Realtime debate metrics display
-- Debate transcripts
-- User participation
-- Changing API logic for cloud AI models
+1. Debate format variations
+2. MODE - Debater perspective variations
+3. TONE - Debater communication styles
+4. GAIN - Debate intensity and cretiveity
+5. Realtime debate metrics display
+6. Debate transcripts
+7. User participation
+8. Changing API logic for cloud AI models
 
-## **Debate format** variations
+## 1. **Debate format** variations
 
 - **One-to-One Debate**: Two perspectives in direct debate
 - **Cross-Examination**: One examiner questioning an examinee
@@ -34,7 +34,7 @@ A full-stack debate system for iteratively generating and stress-testing ideas v
 - **Panel Discussion**: Multiple panelists with a moderator
 - **Round Robin**: Multiple participants in turn-based discussion
 
-## **MODE** - Debater perspective variations
+## 2. **MODE** - Debater perspective variations
 
 - **echo_er**: Amplifies positives, reverberates opportunities
 - **invert_er**: Negates signals, flips polarity, points out missing info
@@ -43,7 +43,7 @@ A full-stack debate system for iteratively generating and stress-testing ideas v
 - **cucumb_er**: Cool-headed academic analysis
 - **archiv_er**: Brings historical context, prior works, literature
 
-## **TONE** - Debater communication styles
+## 3. **TONE** - Debater communication styles
 
 - **neutral**: Clear, standard English
 - **technical**: Precise, jargon-heavy, scientific/engineering register
@@ -51,7 +51,7 @@ A full-stack debate system for iteratively generating and stress-testing ideas v
 - **poetic**: Lyrical, metaphor-rich, mystical
 - **satirical**: Witty, ironic, humorous
 
-## **GAIN** - Debate intensity and cretiveity
+## 4. **GAIN** - Debate intensity and cretiveity
 
 - **1~3**: Deterministic, factual
 - **4~6**: Balanced, natural
@@ -78,7 +78,7 @@ This understanding is vital for avoiding anthropomorphism; LLMs don't possess fi
     - deepseek
     - qwen
 
-## Debate metrics
+## 5. Debate metrics
 
 TwistedDebate analyzes and displays the following debate metrics as the debate progresses.
     - Agreement Score
@@ -87,15 +87,15 @@ TwistedDebate analyzes and displays the following debate metrics as the debate p
     - Bias Level
     - Topic Drift
 
-## Debate transcripts
+## 6. Debate transcripts
 
 Debate transcripts are automatically saved to markdown when complete in /outputs folder. User can click record file link to download it.
 
-## User participation
+## 7. User participation
 
 User can participate as a debater in One-to-One debate and as a moderator in Panel Discussion. All other debate formats are for LLM only.
 
-## Changing API logic for cloud AI models
+## 8. Changing API logic for cloud AI models
 
 TwistedDebate is primarily designed for local LLM developers with open weight models, but it can work with cloud AI models by changing the API logic.
 
