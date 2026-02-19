@@ -21,7 +21,7 @@ A full-stack debate system for iteratively generating and stress-testing ideas v
 - MODE - Debater perspective variations
 - TONE - Debater communication styles
 - GAIN - Debate intensity and cretiveity
-- Debate metrics
+- Realtime debate metrics display
 - Debate transcripts
 - User participation
 - Changing API logic for cloud AI models
@@ -60,9 +60,17 @@ A full-stack debate system for iteratively generating and stress-testing ideas v
 
 See ***TwistedPair*** (https://github.com/satoruisaka/TwistedPair) for technical details of Mode, Tone, and Gain control.
 
+### Theoretical remarks on TwistedDebate
+
+TwistedDebate is a platform designed to expose the *range of responses* achievable with LLMs. By systematically varying parameters like MODE, TONE, and GAIN, TwistedDebate reveals the inherent ***‘computational perspectives’*** rooted in their training data and the specific context of each prompt.
+
+Think of LLM like an actor playing different roles. The underlying ‘actor’ (the LLM itself) remains consistent, but its ‘performance’ (the generated output) changes dramatically based on the ‘direction’ it receives, such as through adjustments to MODE, TONE, and GAIN.
+
+This understanding is vital for avoiding anthropomorphism; LLMs don't possess fixed personalities or beliefs. Their responses are a product of the prompt, the parameters, and the training data, not inherent consciousness.
+
 ### Recommended settings and open weight models
 
-1. For the first time, pick a model and use the same one for all debate participants, and use MODE="Cucumber" + TONE="Neutral" + GAIN=5 to observe the most belanced LLM behavior.
+1. For the first time use, pick a model and use the same one for all debate participants, and use MODE="Cucumber" + TONE="Neutral" + GAIN=5 to observe the most belanced LLM behavior.
 2. Then with the same model, experiment with different MODE, TONE, and GAIN settings to expose a wide range of LLM behaviors in a single LLM.
 3. Then try different models. Each LLM has different behavior characteristcis due to their design objectives, training data, and construction methods. Try experimenting with a variety of models to identify their *instruction following* and *reasoning* characteristics. The variants of models below seem to perform well for debates.
     - gemma
@@ -72,11 +80,12 @@ See ***TwistedPair*** (https://github.com/satoruisaka/TwistedPair) for technical
 
 ## Debate metrics
 
-- Agreement Score
-- Convergence
-- Emotional Sensitivity
-- Bias Level
-- Topic Drift
+TwistedDebate analyzes and displays the following debate metrics as the debate progresses.
+    - Agreement Score
+    - Convergence
+    - Emotional Sensitivity
+    - Bias Level
+    - Topic Drift
 
 ## Debate transcripts
 
@@ -204,18 +213,10 @@ This will:
 
 MIT license
 
-## Created and last modified
-
-February 16, 2026 by Satoru Isaka
-
 ## Support
 
 Sorry, no support available.
 
----
+## Created and last modified
 
-# Theoretical remarks on TwistedDebate
-
-TwistedDebate is a platform designed to expose the range of responses achievable with large language models (LLMs). By systematically varying parameters like MODE and TONE, TwistedDebate reveals the inherent ‘computational perspectives’ rooted in their training data and the specific context of each prompt. 
-
-Instead of treating a single LLM as a monolithic fixed entity, it is crucial to recognize the range of behaviors it is capable of exhibiting. Think of it like an actor playing different roles. The underlying ‘actor’ (the LLM itself) remains consistent, but its ‘performance’ (the generated output) changes dramatically based on the ‘direction’ it receives, such as through adjustments to MODE and TONE. This understanding is vital for avoiding anthropomorphism; LLMs don't possess fixed personalities or beliefs. Their responses are a product of the prompt, the parameters, and the training data, not inherent consciousness.
+February 16, 2026 by Satoru Isaka
