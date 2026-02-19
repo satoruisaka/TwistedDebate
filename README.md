@@ -2,11 +2,12 @@
 
 # TwistedDebate: Autonomous AI Debate Platform
 
-A full-stack debate system for iteratively generating and stress-testing ideas via progressive turn-by-turn LLM generation and ***30+ dynamic perspective and communication style variations and debate intensity & creativety control***.
+A full-stack debate system for iteratively generating and stress-testing ideas via progressive turn-by-turn LLM generation and ***30 dynamic perspective and communication style variations, and 10 debate intensity & creativety levels***.
 
 - Supports five debate formats
-- Leverages multiple open-weight models
-- Built for the local LLM community using a FastAPI/Python backend and JavaScript frontend.
+- Leverages open-weight large language models (LLMs)
+- Exposes wide range of LLM behaviors by MODE, TONE, and GAIN control
+- Built for the local LLM community for easy experimentation and custom development with FastAPI/Python backend and JavaScript frontend
 
 ---
 
@@ -14,30 +15,26 @@ A full-stack debate system for iteratively generating and stress-testing ideas v
 
 ---
 
-## Key Features
+## Summary of Key Features
 
-- **Designed for Local LLMs**: A full-stack platform for unlimited experiments with open weight LLMs. It can also be configured for cloud AI models too.
-- **Multiple Models**: Select any available LLMs and have them debate and compare their performances
-- **Multiple Debate Formats**: One-to-one debate, One-on-one cross examination, Many-on-one exmination, Panel discussion with moderator, and Round robin discussion
-- **Multiple Debater Styles**: Adjust debater perspectives and communication styles by prompt distortion
-- **Debate Gain Control**: Adjust debator creativity and intensity by LLM statistical parameters in 1-10 scale
-- **USER Participation**: Join debates as a human participant
-- **Progressive Display**: Turn-by-turn generation with real-time updates
-- **LLM-Based Metrics**: AI analysis of debate quality using gemma3:27b
-- **Moderator Synthesis**: Intelligent summarization covering all participants
-- **Markdown Export**: Save complete debate records
-- **128K Context Window**: Full conversation history for all analysis
-- **Thinking Indicators**: Visual feedback during LLM generation
+- Debate format variations
+- MODE - Debater perspective variations
+- TONE - Debater communication styles
+- GAIN - Debate intensity and cretiveity
+- Debate metrics
+- Debate transcripts
+- User participation
+- Changing API logic for cloud AI models
 
-## Debate formats
+## **Debate format** variations
 
-- **One-on-One Debate**: Two perspectives in direct debate
+- **One-to-One Debate**: Two perspectives in direct debate
 - **Cross-Examination**: One examiner questioning an examinee
 - **Many-on-One Examination**: Multiple examiners questioning one examinee  
 - **Panel Discussion**: Multiple panelists with a moderator
 - **Round Robin**: Multiple participants in turn-based discussion
 
-## Debater perspective variations
+## **MODE** - Debater perspective variations
 
 - **echo_er**: Amplifies positives, reverberates opportunities
 - **invert_er**: Negates signals, flips polarity, points out missing info
@@ -46,7 +43,7 @@ A full-stack debate system for iteratively generating and stress-testing ideas v
 - **cucumb_er**: Cool-headed academic analysis
 - **archiv_er**: Brings historical context, prior works, literature
 
-## Debater communication styles
+## **TONE** - Debater communication styles
 
 - **neutral**: Clear, standard English
 - **technical**: Precise, jargon-heavy, scientific/engineering register
@@ -54,7 +51,46 @@ A full-stack debate system for iteratively generating and stress-testing ideas v
 - **poetic**: Lyrical, metaphor-rich, mystical
 - **satirical**: Witty, ironic, humorous
 
-**Note**: "Cucumber" + "Neutral" result in balanced debates. Use other combinations for more varied and heated interactions.
+## **GAIN** - Debate intensity and cretiveity
+
+- **1~3**: Deterministic, factual
+- **4~6**: Balanced, natural
+- **7~8**: Creative variation
+- **9~10**: Wild, surprising, incoherent
+
+See ***TwistedPair*** (https://github.com/satoruisaka/TwistedPair) for technical details of Mode, Tone, and Gain control.
+
+### Recommended settings and open weight models
+
+1. For the first time, pick a model and use the same one for all debate participants, and use MODE="Cucumber" + TONE="Neutral" + GAIN=5 to observe the most belanced LLM behavior.
+2. Then with the same model, experiment with different MODE, TONE, and GAIN settings to expose a wide range of LLM behaviors in a single LLM.
+3. Then try different models. Each LLM has different behavior characteristcis due to their design objectives, training data, and construction methods. Try experimenting with a variety of models to identify their *instruction following* and *reasoning* characteristics. The variants of models below seem to perform well for debates.
+    - gemma
+    - mistral / ministral
+    - deepseek
+    - qwen
+
+## Debate metrics
+
+- Agreement Score
+- Convergence
+- Emotional Sensitivity
+- Bias Level
+- Topic Drift
+
+## Debate transcripts
+
+Debate transcripts are automatically saved to markdown when complete in /outputs folder. User can click record file link to download it.
+
+## User participation
+
+User can participate as a debater in One-to-One debate and as a moderator in Panel Discussion. All other debate formats are for LLM only.
+
+## Changing API logic for cloud AI models
+
+TwistedDebate is primarily designed for local LLM developers with open weight models, but it can work with cloud AI models by changing the API logic.
+
+Be aware of the associated cost when using cloud AI models due to the potentially large number of tokens being exchanged during a debate.
 
 ---
 
