@@ -80,12 +80,12 @@ This understanding is vital for avoiding anthropomorphism; LLMs don't possess fi
 
 ## 5. Debate metrics
 
-TwistedDebate analyzes and displays the following debate metrics as the debate progresses.
-    - Agreement Score
-    - Convergence
-    - Emotional Sensitivity
-    - Bias Level
-    - Topic Drift
+TwistedDebate analyzes and displays the following debate metrics as the debate progresses:
+ - Agreement Score
+ - Convergence
+ - Emotional Sensitivity
+ - Bias Level
+ - Topic Drift
 
 ## 6. Debate transcripts
 
