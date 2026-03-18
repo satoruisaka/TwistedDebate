@@ -470,11 +470,16 @@ textarea:focus {
     padding: 1.5rem 2rem;
     background-color: var(--bg-secondary);
     border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+    overflow: hidden;
 }
 
 .output-header h2 {
     font-size: 1.3rem;
     color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .transcript-container {

@@ -392,8 +392,9 @@ async function startDebate() {
         AppState.userRole = userParticipant.role;
     }
     
-    // Update UI
-    document.getElementById('current-topic').textContent = topic;
+    // Update UI — truncate display only; full topic is sent to the API
+    const topicDisplay = topic.length > 120 ? topic.substring(0, 120) + '…' : topic;
+    document.getElementById('current-topic').textContent = topicDisplay;
     clearTranscript();
     resetProgress();
     
