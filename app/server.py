@@ -11,6 +11,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+import requests as _http_requests
 
 from app.models import (
     DebateV4Request,
@@ -57,6 +58,27 @@ app.mount("/outputs", StaticFiles(directory=outputs_dir), name="outputs")
 
 # Initialize Facilitator
 facilitator = Facilitator(verbose=config.VERBOSE)
+
+# TwistedCore integration
+_TWISTEDCORE_URL = os.getenv("TWISTEDCORE_URL", "http://localhost:8020")
+
+
+def _notify_twistedcore(event_type: str, session_id: str, source_path: str) -> None:
+    """Fire-and-forget POST to TwistedCore /observe. Never raises."""
+    try:
+        _http_requests.post(
+            f"{_TWISTEDCORE_URL}/observe",
+            json={
+                "source": "TwistedDebate",
+                "event_type": event_type,
+                "session_id": session_id,
+                "source_path": source_path,
+                "partial": False,
+            },
+            timeout=1.0,
+        )
+    except Exception:
+        pass  # TwistedCore being down must never affect TwistedDebate
 
 
 @app.get("/")
@@ -638,6 +660,9 @@ async def save_debate_record(data: dict):
             f.write(md_content)
         
         print(f"[Save Debate] Saved to: {filepath}")
+
+        # Notify TwistedCore
+        _notify_twistedcore("completion", filepath.stem, str(filepath.resolve()))
         
         return {
             "success": True,
